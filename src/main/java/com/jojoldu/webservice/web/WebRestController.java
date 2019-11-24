@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by jojoldu@gmail.com on 2017. 12. 24.
@@ -36,9 +37,12 @@ public class WebRestController {
 
     @GetMapping("/profile")
     public String getProfile () {
-        return Arrays.stream(env.getActiveProfiles())
-                .skip(1)
-                .findFirst()
-                .orElse("");
+            List<String> envlist = Arrays.asList(env.getActiveProfiles());
+            if (envlist.contains("set1")){
+                return "set1";
+            } else if (envlist.contains("set2")){
+                return "set2";
+            }
+            return "";
     }
 }
