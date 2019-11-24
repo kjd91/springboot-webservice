@@ -43,6 +43,6 @@ public class WebRestController {
             } else if (envlist.contains("set2")){
                 return "set2";
             }
-            return "";
+            return "local";
     }
 }
